@@ -1,0 +1,1 @@
+This folder contains page components for the IES site. Edit the .jsx files to add more content.
