@@ -85,24 +85,40 @@ export default function Activities(){
   return (
     <div className="overflow-hidden">
       {/* Hero Section */}
-      <section className="bg-gradient-to-br from-gray-900 via-gray-800 to-green-900 text-white py-20 -mt-12 pt-32">
-        <div className="container">
+      <section className="relative bg-gradient-to-br from-blue-900 via-gray-800 to-green-900 text-white py-20 -mt-12 pt-32 overflow-hidden">
+        <motion.div
+          className="absolute top-20 right-20 w-96 h-96 bg-blue-500/10 rounded-full blur-3xl"
+          animate={{ y: [0, -40, 0], scale: [1, 1.2, 1] }}
+          transition={{ duration: 10, repeat: Infinity, ease: 'easeInOut' }}
+        />
+        <motion.div
+          className="absolute bottom-20 left-20 w-96 h-96 bg-green-500/10 rounded-full blur-3xl"
+          animate={{ y: [0, 40, 0], scale: [1, 1.1, 1] }}
+          transition={{ duration: 8, repeat: Infinity, ease: 'easeInOut' }}
+        />
+        <div className="container relative z-10">
           <motion.div
-            initial={{ opacity: 0, y: 20 }}
+            initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8 }}
             className="max-w-4xl mx-auto text-center"
           >
-            <h1 className="text-5xl md:text-6xl font-bold mb-6">Core Activities</h1>
-            <p className="text-xl text-gray-300 leading-relaxed">
+            <motion.h1
+              className="text-5xl md:text-6xl font-bold mb-6"
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: 0.2, duration: 0.8 }}
+            >
+              Core <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-green-400">Activities</span>
+            </motion.h1>
+            <motion.p
+              className="text-xl text-gray-300 leading-relaxed"
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: 0.4, duration: 0.8 }}
+            >
               12+ Specialized domains of MEP engineering excellence
-            </p>
-            <div className="mt-8 inline-flex items-center gap-3 bg-white/10 backdrop-blur-sm px-6 py-3 rounded-full">
-              <div className="text-3xl">⚙️</div>
-              <div className="text-left">
-                <div className="text-sm text-gray-400">Expertise in</div>
-                <div className="font-bold">12+ Technical Domains</div>
-              </div>
-            </div>
+            </motion.p>
           </motion.div>
         </div>
       </section>
@@ -110,16 +126,30 @@ export default function Activities(){
       {/* Activities Grid */}
       <section className="py-20 bg-white">
         <div className="container">
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+          <div className="grid md:grid-cols-2 gap-8">
             {activities.map((activity, idx) => (
               <motion.div
                 key={idx}
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
-                transition={{ delay: idx * 0.05 }}
-                whileHover={{ y: -5 }}
-                className={`bg-gradient-to-br ${activity.color} p-8 rounded-2xl shadow-lg hover:shadow-xl transition-all border border-gray-100 cursor-pointer`}
+                transition={{ delay: idx * 0.05, duration: 0.6 }}
+                whileHover={{ scale: 1.02 }}
+                className="bg-white p-8 rounded-2xl shadow-lg border border-gray-100 cursor-pointer"
+                style={{ 
+                  transition: "transform 0.3s ease, box-shadow 0.3s ease",
+                  boxShadow: idx % 2 === 0 ? '0 4px 6px -1px rgba(34, 197, 94, 0.1), 0 2px 4px -1px rgba(34, 197, 94, 0.06)' : '0 4px 6px -1px rgba(59, 130, 246, 0.1), 0 2px 4px -1px rgba(59, 130, 246, 0.06)'
+                }}
+                onMouseEnter={(e) => {
+                  e.currentTarget.style.boxShadow = idx % 2 === 0 
+                    ? '0 20px 25px -5px rgba(34, 197, 94, 0.3), 0 10px 10px -5px rgba(34, 197, 94, 0.2)'
+                    : '0 20px 25px -5px rgba(59, 130, 246, 0.3), 0 10px 10px -5px rgba(59, 130, 246, 0.2)'
+                }}
+                onMouseLeave={(e) => {
+                  e.currentTarget.style.boxShadow = idx % 2 === 0
+                    ? '0 4px 6px -1px rgba(34, 197, 94, 0.1), 0 2px 4px -1px rgba(34, 197, 94, 0.06)'
+                    : '0 4px 6px -1px rgba(59, 130, 246, 0.1), 0 2px 4px -1px rgba(59, 130, 246, 0.06)'
+                }}
               >
                 <div className="text-6xl mb-4">{activity.icon}</div>
                 <h3 className="text-2xl font-bold text-gray-900 mb-3">{activity.title}</h3>
@@ -131,10 +161,17 @@ export default function Activities(){
       </section>
 
       {/* Capabilities Section */}
-      <section className="py-20 bg-gray-50">
+      <section className="py-20 bg-gradient-to-b from-gray-50 to-white">
         <div className="container">
           <div className="max-w-4xl mx-auto">
-            <h2 className="text-4xl font-bold text-gray-900 mb-12 text-center">Our Capabilities</h2>
+            <motion.h2 
+              className="text-4xl font-bold text-gray-900 mb-12 text-center"
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+            >
+              Our Capabilities
+            </motion.h2>
             
             <div className="grid md:grid-cols-2 gap-8">
               {[
@@ -161,11 +198,26 @@ export default function Activities(){
               ].map((item, idx) => (
                 <motion.div
                   key={idx}
-                  initial={{ opacity: 0, x: idx % 2 === 0 ? -20 : 20 }}
-                  whileInView={{ opacity: 1, x: 0 }}
+                  initial={{ opacity: 0, y: 20 }}
+                  whileInView={{ opacity: 1, y: 0 }}
                   viewport={{ once: true }}
-                  transition={{ delay: idx * 0.1 }}
-                  className="flex gap-4 p-6 bg-white rounded-xl shadow-md"
+                  transition={{ delay: idx * 0.1, duration: 0.6 }}
+                  whileHover={{ scale: 1.02 }}
+                  className="flex gap-4 p-6 bg-white rounded-xl"
+                  style={{ 
+                    transition: "box-shadow 0.3s ease, transform 0.3s ease",
+                    boxShadow: idx % 2 === 0 ? '0 4px 6px -1px rgba(34, 197, 94, 0.1), 0 2px 4px -1px rgba(34, 197, 94, 0.06)' : '0 4px 6px -1px rgba(59, 130, 246, 0.1), 0 2px 4px -1px rgba(59, 130, 246, 0.06)'
+                  }}
+                  onMouseEnter={(e) => {
+                    e.currentTarget.style.boxShadow = idx % 2 === 0 
+                      ? '0 20px 25px -5px rgba(34, 197, 94, 0.3), 0 10px 10px -5px rgba(34, 197, 94, 0.2)'
+                      : '0 20px 25px -5px rgba(59, 130, 246, 0.3), 0 10px 10px -5px rgba(59, 130, 246, 0.2)'
+                  }}
+                  onMouseLeave={(e) => {
+                    e.currentTarget.style.boxShadow = idx % 2 === 0
+                      ? '0 4px 6px -1px rgba(34, 197, 94, 0.1), 0 2px 4px -1px rgba(34, 197, 94, 0.06)'
+                      : '0 4px 6px -1px rgba(59, 130, 246, 0.1), 0 2px 4px -1px rgba(59, 130, 246, 0.06)'
+                  }}
                 >
                   <div className="text-5xl flex-shrink-0">{item.icon}</div>
                   <div>
@@ -180,18 +232,45 @@ export default function Activities(){
       </section>
 
       {/* CTA Section */}
-      <section className="py-20 bg-gradient-to-r from-green-600 to-emerald-700 text-white">
-        <div className="container text-center">
-          <h2 className="text-4xl font-bold mb-6">Looking for Specialized MEP Solutions?</h2>
-          <p className="text-xl text-green-100 mb-8 max-w-2xl mx-auto">
-            Our multidisciplinary team is ready to tackle your most complex engineering challenges.
-          </p>
-          <a 
-            href="/contact" 
-            className="inline-block bg-white text-green-600 px-10 py-4 rounded-lg font-bold hover:bg-gray-100 transition text-lg"
+      <section className="py-20 bg-gradient-to-r from-green-600 via-blue-600 to-green-600 text-white relative overflow-hidden">
+        <motion.div
+          className="absolute inset-0 opacity-20"
+          animate={{
+            backgroundPosition: ['0% 0%', '100% 100%'],
+          }}
+          transition={{
+            duration: 20,
+            repeat: Infinity,
+            repeatType: 'reverse'
+          }}
+          style={{
+            backgroundImage: 'radial-gradient(circle, white 1px, transparent 1px)',
+            backgroundSize: '50px 50px'
+          }}
+        />
+        
+        <div className="container relative z-10 text-center">
+          <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.8 }}
+            className="max-w-3xl mx-auto"
           >
-            Discuss Your Project
-          </a>
+            <h2 className="text-4xl font-bold mb-6">Looking for Specialized MEP Solutions?</h2>
+            <p className="text-xl mb-8 text-gray-100">
+              Our multidisciplinary team is ready to tackle your most complex engineering challenges.
+            </p>
+            <motion.a 
+              href="/contact" 
+              className="inline-block bg-white text-green-600 px-10 py-4 rounded-xl font-bold text-lg hover:bg-gray-100 transition-all"
+              whileHover={{ scale: 1.05 }}
+              whileTap={{ scale: 0.95 }}
+              transition={{ type: "spring", stiffness: 400, damping: 17 }}
+            >
+              Discuss Your Project
+            </motion.a>
+          </motion.div>
         </div>
       </section>
     </div>

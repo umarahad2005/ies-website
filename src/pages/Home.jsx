@@ -10,30 +10,35 @@ export default function Home(){
     setMeta('IES - Integrated & Efficient Solutions','Leading MEP Engineering Consultancy in Pakistan - Professional engineering services, projects and products.')
   },[])
 
-  // Hero slider images
+  // Hero slider images with CDC-style storytelling
   const heroSlides = [
     {
       image: 'https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?w=1600&q=80',
-      title: 'Engineering Excellence',
-      subtitle: 'Building the Future'
+      title: 'Transforming Integrated Design Solutions',
+      subtitle: 'Excellence in MEP Engineering for Over 30 Years'
     },
     {
       image: 'https://images.unsplash.com/photo-1541888946425-d81bb19240f5?w=1600&q=80',
-      title: 'Innovative Solutions',
-      subtitle: 'Sustainable Design'
+      title: 'Building Tomorrow\'s Infrastructure Today',
+      subtitle: '500+ Projects Delivered with Precision & Innovation'
     },
     {
       image: 'https://images.unsplash.com/photo-1503387762-592deb58ef4e?w=1600&q=80',
-      title: 'Expert Consultancy',
-      subtitle: '30+ Years of Experience'
+      title: 'Sustainable Energy Solutions',
+      subtitle: 'Leading the Way in Green Building Technology'
+    },
+    {
+      image: 'https://images.unsplash.com/photo-1581094794329-c8112a89af12?w=1600&q=80',
+      title: 'Smart Engineering, Smarter Buildings',
+      subtitle: 'Advanced HVAC & MEP Systems for Modern Infrastructure'
     }
   ]
 
-  // Auto-advance slider
+  // Auto-advance slider - faster timing
   useEffect(() => {
     const timer = setInterval(() => {
       setCurrentSlide((prev) => (prev + 1) % heroSlides.length)
-    }, 5000) // Change slide every 5 seconds
+    }, 3000) // Change slide every 3 seconds (faster)
     
     return () => clearInterval(timer)
   }, [])
@@ -97,7 +102,7 @@ export default function Home(){
   return (
     <div className="overflow-hidden">
       {/* Hero Section with Image Slider */}
-      <section className="relative bg-gradient-to-br from-gray-900 via-gray-800 to-green-900 text-white -mt-12 pt-24 pb-20 overflow-hidden min-h-screen flex items-center">
+      <section className="relative bg-gradient-to-br from-green-900 via-emerald-800 to-green-950 text-white -mt-12 pt-24 pb-20 overflow-hidden min-h-screen flex items-center">
         {/* Image Slider Background */}
         <div className="absolute inset-0">
           <AnimatePresence mode="wait">
@@ -115,12 +120,12 @@ export default function Home(){
               }}
             />
           </AnimatePresence>
-          <div className="absolute inset-0 bg-gradient-to-r from-gray-900/90 via-green-900/80 to-gray-900/90"></div>
+          <div className="absolute inset-0 bg-gradient-to-r from-green-900/95 via-emerald-900/85 to-green-900/95"></div>
         </div>
 
         {/* Floating Elements */}
         <motion.div
-          className="absolute top-20 right-20 w-72 h-72 bg-green-500/10 rounded-full blur-3xl"
+          className="absolute top-20 right-20 w-72 h-72 bg-green-400/20 rounded-full blur-3xl"
           animate={{
             y: [0, -30, 0],
             scale: [1, 1.1, 1]
@@ -132,7 +137,7 @@ export default function Home(){
           }}
         />
         <motion.div
-          className="absolute bottom-20 left-20 w-96 h-96 bg-blue-500/10 rounded-full blur-3xl"
+          className="absolute bottom-20 left-20 w-96 h-96 bg-emerald-400/20 rounded-full blur-3xl"
           animate={{
             y: [0, 30, 0],
             scale: [1, 1.2, 1]
@@ -155,7 +160,7 @@ export default function Home(){
                 initial={{ opacity: 0, y: -20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: 0.2, duration: 0.8 }}
-                className="inline-block mb-4 px-4 py-2 bg-green-500/20 backdrop-blur-sm rounded-full text-sm font-semibold text-green-300 border border-green-400/30"
+                className="inline-block mb-4 px-4 py-2 bg-green-400/30 backdrop-blur-sm rounded-full text-sm font-semibold text-green-100 border border-green-400/50 shadow-lg shadow-green-500/20"
               >
                 ✨ Leading MEP Engineering Consultancy
               </motion.div>
@@ -194,7 +199,7 @@ export default function Home(){
               >
                 <Link 
                   to="/projects" 
-                  className="group bg-gradient-to-r from-green-600 to-emerald-700 hover:from-green-700 hover:to-emerald-800 text-white px-8 py-4 rounded-xl font-semibold transition-all shadow-lg hover:shadow-2xl flex items-center gap-2 transform hover:scale-105"
+                  className="group bg-gradient-to-r from-green-500 via-emerald-500 to-green-600 hover:shadow-2xl hover:shadow-green-500/30 text-white px-8 py-4 rounded-xl font-semibold transition-all shadow-lg flex items-center gap-2 transform hover:scale-105"
                 >
                   View Projects
                   <motion.svg 
@@ -229,8 +234,8 @@ export default function Home(){
                     onClick={() => setCurrentSlide(index)}
                     className={`h-2 rounded-full transition-all duration-300 ${
                       currentSlide === index 
-                        ? 'w-12 bg-green-400' 
-                        : 'w-2 bg-white/30 hover:bg-white/50'
+                        ? 'w-12 bg-green-400 shadow-lg shadow-green-400/50' 
+                        : 'w-2 bg-white/30 hover:bg-green-300/50'
                     }`}
                     aria-label={`Go to slide ${index + 1}`}
                   />
@@ -246,7 +251,7 @@ export default function Home(){
             >
               <motion.div
                 whileHover={{ scale: 1.02 }}
-                transition={{ duration: 0.3 }}
+                transition={{ type: "spring", stiffness: 300, damping: 20 }}
                 className="relative"
               >
                 <img 
@@ -254,7 +259,7 @@ export default function Home(){
                   alt="Modern Architecture" 
                   className="rounded-3xl shadow-2xl transform perspective-1000"
                 />
-                <div className="absolute inset-0 bg-gradient-to-t from-green-900/50 to-transparent rounded-3xl"></div>
+                <div className="absolute inset-0 bg-gradient-to-t from-green-900/60 to-transparent rounded-3xl"></div>
                 
                 {/* Floating Stats Card */}
                 <motion.div
@@ -263,11 +268,12 @@ export default function Home(){
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ delay: 1, duration: 0.8 }}
                   whileHover={{ y: -5 }}
+                  style={{ transition: "none" }}
                 >
                   <div className="flex items-center gap-4">
                     <div className="text-5xl">🏆</div>
                     <div>
-                      <div className="text-3xl font-bold text-green-600">500+</div>
+                      <div className="text-3xl font-bold bg-gradient-to-r from-green-500 to-emerald-500 bg-clip-text text-transparent">500+</div>
                       <div className="text-sm text-gray-600">Projects Delivered</div>
                     </div>
                   </div>
@@ -281,7 +287,15 @@ export default function Home(){
       {/* Animated Stats Section */}
       <section className="py-20 bg-white relative overflow-hidden">
         <motion.div
-          className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-green-600 via-emerald-600 to-green-600"
+          className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-green-500 via-blue-500 to-green-500"
+          animate={{
+            backgroundPosition: ['0% 50%', '100% 50%', '0% 50%']
+          }}
+          transition={{
+            duration: 5,
+            repeat: Infinity,
+            ease: "linear"
+          }}
           style={{ backgroundSize: '200% 100%' }}
         />
         
@@ -298,18 +312,19 @@ export default function Home(){
                 key={idx}
                 variants={itemVariants}
                 whileHover={{ y: -10, scale: 1.05 }}
+                transition={{ type: "spring", stiffness: 300, damping: 20 }}
                 className="relative group cursor-pointer"
               >
                 <div className="absolute inset-0 bg-gradient-to-br from-green-500/10 to-emerald-500/10 rounded-2xl blur-xl group-hover:blur-2xl transition-all duration-500 opacity-0 group-hover:opacity-100"></div>
                 
-                <div className="relative bg-white rounded-2xl p-6 shadow-lg hover:shadow-2xl transition-all duration-500 border border-gray-100 overflow-hidden">
+                <div className="relative bg-white rounded-2xl p-6 shadow-lg hover:shadow-2xl hover:shadow-green-500/20 transition-all duration-500 border border-gray-100 overflow-hidden">
                   <div className="absolute top-0 right-0 w-32 h-32 opacity-10 overflow-hidden">
                     <img src={stat.image} alt="" className="w-full h-full object-cover" />
                   </div>
                   
                   <div className="text-6xl mb-3 relative z-10">{stat.icon}</div>
                   <motion.div 
-                    className="text-5xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-green-600 to-emerald-600 mb-2"
+                    className="text-5xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-green-500 to-emerald-600 mb-2"
                     initial={{ scale: 0.5, opacity: 0 }}
                     whileInView={{ scale: 1, opacity: 1 }}
                     viewport={{ once: true }}
@@ -351,7 +366,7 @@ export default function Home(){
               <div className="grid grid-cols-2 gap-4">
                 <motion.div
                   whileHover={{ scale: 1.05, rotate: 2 }}
-                  transition={{ duration: 0.3 }}
+                  transition={{ type: "spring", stiffness: 300, damping: 20 }}
                 >
                   <img 
                     src="/logo.jpg" 
@@ -361,7 +376,7 @@ export default function Home(){
                 </motion.div>
                 <motion.div
                   whileHover={{ scale: 1.05, rotate: -2 }}
-                  transition={{ duration: 0.3 }}
+                  transition={{ type: "spring", stiffness: 300, damping: 20 }}
                   className="mt-8"
                 >
                   <img 
@@ -372,7 +387,7 @@ export default function Home(){
                 </motion.div>
                 <motion.div
                   whileHover={{ scale: 1.05, rotate: -2 }}
-                  transition={{ duration: 0.3 }}
+                  transition={{ type: "spring", stiffness: 300, damping: 20 }}
                   className="-mt-8"
                 >
                   <img 
@@ -383,7 +398,7 @@ export default function Home(){
                 </motion.div>
                 <motion.div
                   whileHover={{ scale: 1.05, rotate: 2 }}
-                  transition={{ duration: 0.3 }}
+                  transition={{ type: "spring", stiffness: 300, damping: 20 }}
                 >
                   <img 
                     src="https://images.unsplash.com/photo-1504307651254-35680f356dfd?w=600&q=80" 
@@ -410,7 +425,7 @@ export default function Home(){
               </motion.div>
               
               <h2 className="text-5xl font-bold text-gray-900 mb-6 leading-tight">
-                IES at <span className="text-transparent bg-clip-text bg-gradient-to-r from-green-600 to-emerald-600">Core!</span>
+                IES at <span className="text-transparent bg-clip-text bg-gradient-to-r from-green-500 to-emerald-600">Core!</span>
               </h2>
               
               <p className="text-gray-700 text-lg mb-6 leading-relaxed">
@@ -423,7 +438,7 @@ export default function Home(){
               
               <Link 
                 to="/about" 
-                className="inline-flex items-center text-green-600 font-semibold hover:text-green-700 group text-lg"
+                className="inline-flex items-center text-green-500 font-semibold hover:text-green-600 group text-lg"
               >
                 Learn More About Us
                 <motion.svg 
@@ -468,53 +483,53 @@ export default function Home(){
                 icon: '🎯',
                 description: 'To provide innovative, efficient, sustainable, and cost-effective engineered solutions.',
                 image: 'https://images.unsplash.com/photo-1552664730-d307ca884978?w=800&q=80',
-                gradient: 'from-green-500 to-emerald-500'
+                gradient: 'from-green-400 via-emerald-500 to-green-600',
+                bgColor: 'from-green-50 to-emerald-50'
               },
               {
                 title: 'Values',
                 icon: '💎',
                 description: 'We take personal responsibility to deliver on our promises to our customers, suppliers and stakeholders.',
                 image: 'https://images.unsplash.com/photo-1600880292203-757bb62b4baf?w=800&q=80',
-                gradient: 'from-teal-500 to-green-500'
+                gradient: 'from-blue-500 via-cyan-500 to-blue-600',
+                bgColor: 'from-blue-100 to-cyan-100'
               },
               {
                 title: 'Vision',
                 icon: '🔭',
                 description: 'IES will be the leader in providing energy-efficient and cost-effective solutions for engineering projects.',
                 image: 'https://images.unsplash.com/photo-1451187580459-43490279c0fa?w=800&q=80',
-                gradient: 'from-blue-500 to-cyan-500'
+                gradient: 'from-green-500 via-emerald-500 to-green-600',
+                bgColor: 'from-green-50 to-emerald-50'
               }
             ].map((item, idx) => (
               <motion.div
                 key={idx}
                 variants={itemVariants}
                 whileHover={{ y: -10, scale: 1.02 }}
+                transition={{ type: "spring", stiffness: 300, damping: 20 }}
                 className="group relative cursor-pointer"
               >
                 <div className="relative bg-white rounded-3xl shadow-xl hover:shadow-2xl transition-all duration-500 overflow-hidden border border-gray-100">
-                  {/* Image Background */}
-                  <div className="relative h-48 overflow-hidden">
-                    <img 
-                      src={item.image} 
-                      alt={item.title}
-                      className="w-full h-full object-cover transform group-hover:scale-110 transition-transform duration-700"
-                    />
-                    <div className={`absolute inset-0 bg-gradient-to-br ${item.gradient} opacity-80 group-hover:opacity-90 transition-opacity`}></div>
-                    <div className="absolute inset-0 flex items-center justify-center">
-                      <div className="text-8xl">{item.icon}</div>
+                  {/* Gradient Background Header */}
+                  <div className={`relative h-48 bg-gradient-to-br ${item.bgColor} flex items-center justify-center overflow-hidden`}>
+                    <div className="absolute inset-0 opacity-30">
+                      <img 
+                        src={item.image} 
+                        alt={item.title}
+                        className="w-full h-full object-cover"
+                      />
                     </div>
+                    <div className="relative z-10 text-8xl drop-shadow-lg">{item.icon}</div>
                   </div>
                   
                   {/* Content */}
-                  <div className="p-8">
-                    <h3 className="text-3xl font-bold text-gray-900 mb-4">{item.title}</h3>
+                  <div className="p-8 bg-white">
+                    <h3 className={`text-3xl font-bold mb-4 bg-gradient-to-r ${item.gradient} bg-clip-text text-transparent`}>
+                      {item.title}
+                    </h3>
                     <p className="text-gray-700 leading-relaxed">{item.description}</p>
                   </div>
-                  
-                  {/* Hover Effect */}
-                  <motion.div
-                    className={`absolute inset-0 bg-gradient-to-br ${item.gradient} opacity-0 group-hover:opacity-10 transition-opacity duration-500`}
-                  ></motion.div>
                 </div>
               </motion.div>
             ))}
@@ -523,11 +538,11 @@ export default function Home(){
       </section>
 
       {/* Services Overview with Images */}
-      <section className="py-24 bg-gradient-to-br from-gray-900 via-green-900 to-gray-900 text-white relative overflow-hidden">
+      <section className="py-24 bg-gradient-to-br from-green-950 via-emerald-900 to-green-950 text-white relative overflow-hidden">
         {/* Animated Background Patterns */}
         <div className="absolute inset-0 opacity-10">
-          <div className="absolute top-0 left-0 w-96 h-96 bg-green-500 rounded-full blur-3xl"></div>
-          <div className="absolute bottom-0 right-0 w-96 h-96 bg-emerald-500 rounded-full blur-3xl"></div>
+          <div className="absolute top-0 left-0 w-96 h-96 bg-green-400 rounded-full blur-3xl"></div>
+          <div className="absolute bottom-0 right-0 w-96 h-96 bg-emerald-400 rounded-full blur-3xl"></div>
         </div>
         
         <div className="container relative z-10">
@@ -553,6 +568,7 @@ export default function Home(){
                 key={idx}
                 variants={itemVariants}
                 whileHover={{ y: -10, scale: 1.05 }}
+                transition={{ type: "spring", stiffness: 300, damping: 20 }}
                 className="group relative cursor-pointer"
               >
                 <div className="relative rounded-2xl overflow-hidden shadow-2xl">
@@ -574,7 +590,7 @@ export default function Home(){
                   </div>
                   
                   {/* Hover Overlay */}
-                  <div className="absolute inset-0 bg-gradient-to-br from-green-600/0 to-emerald-600/0 group-hover:from-green-600/20 group-hover:to-emerald-600/20 transition-all duration-500"></div>
+                  <div className="absolute inset-0 bg-gradient-to-br from-green-600/0 to-emerald-600/0 group-hover:from-green-500/20 group-hover:to-emerald-600/20 transition-all duration-500"></div>
                 </div>
               </motion.div>
             ))}
@@ -589,7 +605,7 @@ export default function Home(){
           >
             <Link 
               to="/services" 
-              className="inline-block bg-gradient-to-r from-green-600 to-emerald-600 hover:from-green-700 hover:to-emerald-700 text-white px-10 py-4 rounded-xl font-semibold transition-all shadow-lg hover:shadow-2xl transform hover:scale-105"
+              className="inline-block bg-gradient-to-r from-green-500 via-emerald-500 to-green-600 hover:shadow-2xl hover:shadow-green-500/30 text-white px-10 py-4 rounded-xl font-semibold transition-all shadow-lg transform hover:scale-105"
             >
               View All Services
             </Link>
@@ -605,7 +621,7 @@ export default function Home(){
             backgroundImage: 'url(https://images.unsplash.com/photo-1497366216548-37526070297c?w=1600&q=80)'
           }}
         />
-        <div className="absolute inset-0 bg-gradient-to-r from-green-900/90 to-emerald-900/90"></div>
+        <div className="absolute inset-0 bg-gradient-to-r from-green-900/95 via-emerald-900/90 to-green-900/95"></div>
         
         <div className="container relative z-10 text-center text-white">
           <motion.div
@@ -620,7 +636,7 @@ export default function Home(){
             </p>
             <Link 
               to="/contact" 
-              className="inline-block bg-white text-green-600 px-12 py-5 rounded-xl font-bold hover:bg-gray-100 transition-all shadow-2xl text-xl transform hover:scale-105"
+              className="inline-block bg-white text-green-600 px-12 py-5 rounded-xl font-bold hover:bg-green-50 hover:shadow-2xl transition-all shadow-2xl text-xl transform hover:scale-105"
             >
               Contact Us Today
             </Link>

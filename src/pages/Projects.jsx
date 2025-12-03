@@ -21,7 +21,7 @@ export default function Projects(){
       description: 'State-of-the-art shopping mall with advanced HVAC and MEP systems',
       image: 'https://images.unsplash.com/photo-1555636222-cae831e670b3?w=800&q=80',
       icon: '🏬',
-      color: 'from-green-600 to-emerald-600',
+      color: 'from-green-500 to-emerald-600',
       tags: ['HVAC', 'Electrical', 'Plumbing', 'Fire Safety']
     },
     {
@@ -32,7 +32,7 @@ export default function Projects(){
       description: 'Modern retail complex with energy-efficient MEP design',
       image: 'https://images.unsplash.com/photo-1567958451986-2de427a4a0be?w=800&q=80',
       icon: '🛍️',
-      color: 'from-blue-600 to-cyan-600',
+      color: 'from-emerald-500 to-green-600',
       tags: ['BIM', 'Energy Audit', 'HVAC']
     },
     {
@@ -43,7 +43,7 @@ export default function Projects(){
       description: 'Regional shopping destination with comprehensive MEP solutions',
       image: 'https://images.unsplash.com/photo-1519567241046-7f570eee3ce6?w=800&q=80',
       icon: '🏪',
-      color: 'from-green-600 to-teal-600',
+      color: 'from-green-600 to-emerald-500',
       tags: ['HVAC', 'Sustainability', 'BIM']
     },
     {
@@ -54,7 +54,7 @@ export default function Projects(){
       description: 'High-rise commercial tower with smart building systems',
       image: 'https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?w=800&q=80',
       icon: '🏢',
-      color: 'from-orange-600 to-red-600',
+      color: 'from-emerald-600 to-green-500',
       tags: ['Smart Systems', 'HVAC', 'Electrical']
     },
     {
@@ -65,7 +65,7 @@ export default function Projects(){
       description: 'Modern office facility with advanced environmental controls',
       image: 'https://images.unsplash.com/photo-1545324418-cc1a3fa10c00?w=800&q=80',
       icon: '🏭',
-      color: 'from-green-600 to-emerald-600',
+      color: 'from-green-500 to-emerald-600',
       tags: ['Office MEP', 'HVAC', 'Automation']
     },
     {
@@ -76,7 +76,7 @@ export default function Projects(){
       description: 'Industrial facility with specialized MEP infrastructure',
       image: 'https://images.unsplash.com/photo-1565793298595-6a879b1d9492?w=800&q=80',
       icon: '⚡',
-      color: 'from-yellow-600 to-orange-600',
+      color: 'from-emerald-500 to-green-600',
       tags: ['Industrial MEP', 'Power Systems', 'HVAC']
     }
   ]
@@ -118,7 +118,7 @@ export default function Projects(){
   return (
     <div className="overflow-hidden">
       {/* Hero Section with Parallax */}
-      <section className="relative bg-gradient-to-br from-gray-900 via-green-900 to-emerald-900 text-white py-32 -mt-12 pt-40 overflow-hidden">
+      <section className="relative bg-gradient-to-br from-green-900 via-emerald-800 to-green-950 text-white py-32 -mt-12 pt-40 overflow-hidden">
         {/* Animated Background */}
         <div
           className="absolute inset-0 opacity-20 bg-cover bg-center"
@@ -129,7 +129,7 @@ export default function Projects(){
 
         {/* Floating Elements */}
         <motion.div
-          className="absolute top-20 right-10 w-96 h-96 bg-green-500/20 rounded-full blur-3xl"
+          className="absolute top-20 right-10 w-96 h-96 bg-green-400/25 rounded-full blur-3xl"
           animate={{
             y: [0, -50, 0],
             scale: [1, 1.2, 1],
@@ -141,7 +141,7 @@ export default function Projects(){
           }}
         />
         <motion.div
-          className="absolute bottom-20 left-10 w-96 h-96 bg-emerald-500/20 rounded-full blur-3xl"
+          className="absolute bottom-20 left-10 w-96 h-96 bg-emerald-400/25 rounded-full blur-3xl"
           animate={{
             y: [0, 50, 0],
             scale: [1, 1.3, 1],
@@ -164,7 +164,7 @@ export default function Projects(){
               initial={{ opacity: 0, scale: 0.9 }}
               animate={{ opacity: 1, scale: 1 }}
               transition={{ delay: 0.2 }}
-              className="inline-block mb-6 px-6 py-3 bg-white/10 backdrop-blur-sm rounded-full text-sm font-semibold border border-white/20"
+              className="inline-block mb-6 px-6 py-3 bg-green-400/20 backdrop-blur-sm rounded-full text-sm font-semibold border border-green-400/40 text-green-100 shadow-lg shadow-green-500/20"
             >
               ✨ Portfolio of Excellence
             </motion.div>
@@ -175,7 +175,7 @@ export default function Projects(){
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.3 }}
             >
-              Our <span className="text-transparent bg-clip-text bg-gradient-to-r from-green-400 to-emerald-400">Projects</span>
+              Our <span className="text-transparent bg-clip-text bg-gradient-to-r from-green-300 to-emerald-300">Projects</span>
             </motion.h1>
             
             <motion.p 
@@ -233,8 +233,8 @@ export default function Projects(){
                 onClick={() => setSelectedCategory(category)}
                 className={`px-6 py-3 rounded-full font-semibold transition-all ${
                   selectedCategory === category
-                    ? 'bg-gradient-to-r from-green-600 to-emerald-600 text-white shadow-lg'
-                    : 'bg-gray-100 text-gray-700 hover:bg-gray-200'
+                    ? 'bg-gradient-to-r from-green-500 to-emerald-600 text-white shadow-lg shadow-green-500/30'
+                    : 'bg-gray-100 text-gray-700 hover:bg-green-50 hover:text-green-600'
                 }`}
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
@@ -247,12 +247,12 @@ export default function Projects(){
       </section>
 
       {/* Projects Grid */}
-      <section className="py-20 bg-gradient-to-br from-gray-50 to-green-50">
+      <section className="py-20 bg-gradient-to-br from-green-50 to-emerald-50">
         <div className="container">
           <AnimatePresence mode="wait">
             <motion.div 
               key={selectedCategory}
-              className="grid md:grid-cols-2 lg:grid-cols-3 gap-8"
+              className="grid md:grid-cols-2 gap-8"
               variants={containerVariants}
               initial="hidden"
               animate="visible"
@@ -262,12 +262,28 @@ export default function Projects(){
                 <motion.div
                   key={project.title}
                   variants={itemVariants}
-                  whileHover={{ y: -15 }}
                   onHoverStart={() => setHoveredProject(idx)}
                   onHoverEnd={() => setHoveredProject(null)}
                   className="group relative cursor-pointer"
                 >
-                  <div className="relative bg-white rounded-3xl shadow-xl hover:shadow-2xl transition-all duration-500 overflow-hidden border border-gray-100">
+                  <motion.div 
+                    className="relative bg-white rounded-3xl shadow-xl overflow-hidden border border-gray-200"
+                    style={{
+                      boxShadow: '0 10px 25px rgba(0, 0, 0, 0.1)',
+                    }}
+                    whileHover={{ 
+                      scale: 1.02,
+                    }}
+                    transition={{ type: "spring", stiffness: 300, damping: 25 }}
+                    onMouseEnter={(e) => {
+                      e.currentTarget.style.boxShadow = idx % 2 === 0 
+                        ? '0 25px 50px rgba(34, 197, 94, 0.3)' 
+                        : '0 25px 50px rgba(59, 130, 246, 0.3)'
+                    }}
+                    onMouseLeave={(e) => {
+                      e.currentTarget.style.boxShadow = '0 10px 25px rgba(0, 0, 0, 0.1)'
+                    }}
+                  >
                     {/* Image Container */}
                     <div className="relative h-80 overflow-hidden">
                       <motion.img 
@@ -370,7 +386,7 @@ export default function Projects(){
                         ease: "easeInOut"
                       }}
                     />
-                  </div>
+                  </motion.div>
                 </motion.div>
               ))}
             </motion.div>
@@ -379,29 +395,41 @@ export default function Projects(){
       </section>
 
       {/* CTA Section */}
-      <section className="py-24 bg-gradient-to-r from-green-600 via-emerald-600 to-green-600 text-white relative overflow-hidden">
-        <div
-          className="absolute inset-0 opacity-20 bg-cover"
+      <section className="py-20 bg-gradient-to-r from-green-600 via-blue-600 to-green-600 text-white relative overflow-hidden">
+        <motion.div
+          className="absolute inset-0 opacity-20"
+          animate={{
+            backgroundPosition: ['0% 0%', '100% 100%'],
+          }}
+          transition={{
+            duration: 20,
+            repeat: Infinity,
+            repeatType: 'reverse'
+          }}
           style={{
-            backgroundImage: 'url(https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?w=1600&q=80)'
+            backgroundImage: 'radial-gradient(circle, white 1px, transparent 1px)',
+            backgroundSize: '50px 50px'
           }}
         />
         
         <div className="container relative z-10 text-center">
           <motion.div
-            initial={{ opacity: 0, y: 20 }}
+            initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
+            transition={{ duration: 0.8 }}
+            className="max-w-3xl mx-auto"
           >
-            <h2 className="text-5xl font-bold mb-6">Have a Project in Mind?</h2>
-            <p className="text-2xl text-green-100 mb-10 max-w-2xl mx-auto">
+            <h2 className="text-4xl font-bold mb-6">Have a Project in Mind?</h2>
+            <p className="text-xl mb-8 text-gray-100">
               Let's discuss how we can bring your vision to life with our proven MEP engineering expertise.
             </p>
             <motion.a 
               href="/contact" 
-              className="inline-block bg-white text-green-600 px-12 py-5 rounded-xl font-bold hover:bg-gray-100 transition-all shadow-2xl text-xl"
+              className="inline-block bg-white text-green-600 px-10 py-4 rounded-xl font-bold text-lg hover:bg-gray-100 transition-all"
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
+              transition={{ type: "spring", stiffness: 400, damping: 17 }}
             >
               Start Your Project
             </motion.a>

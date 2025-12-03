@@ -8,6 +8,7 @@ const Home = lazy(() => import('./pages/Home'))
 const About = lazy(() => import('./pages/About'))
 const Services = lazy(() => import('./pages/Services'))
 const Activities = lazy(() => import('./pages/Activities'))
+const Specialization = lazy(() => import('./pages/Specialization'))
 const Products = lazy(() => import('./pages/Products'))
 const Clients = lazy(() => import('./pages/Clients'))
 const Projects = lazy(() => import('./pages/Projects'))
@@ -42,6 +43,7 @@ export default function App() {
             <Route path="/about" element={<PageWrapper><About /></PageWrapper>} />
             <Route path="/services" element={<PageWrapper><Services /></PageWrapper>} />
             <Route path="/activities" element={<PageWrapper><Activities /></PageWrapper>} />
+            <Route path="/specialization" element={<PageWrapper><Specialization /></PageWrapper>} />
             <Route path="/products" element={<PageWrapper><Products /></PageWrapper>} />
             <Route path="/clients" element={<PageWrapper><Clients /></PageWrapper>} />
             <Route path="/projects" element={<PageWrapper><Projects /></PageWrapper>} />

@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import { motion } from 'framer-motion'
+import emailjs from '@emailjs/browser'
 
 export default function Contact(){
   useEffect(()=>{
@@ -8,10 +9,48 @@ export default function Contact(){
   },[])
   
   const [form, setForm] = useState({name:'',email:'',subject:'',message:''})
+  const [isSubmitting, setIsSubmitting] = useState(false)
+  const [submitStatus, setSubmitStatus] = useState(null) // 'success' | 'error' | null
 
   function onSubmit(e){
     e.preventDefault();
-    alert('Thank you for your message! This is a demo contact form. Configure a real endpoint to receive messages.')
+    setIsSubmitting(true)
+    setSubmitStatus(null)
+
+    // EmailJS Configuration
+    const SERVICE_ID = 'service_xe50j7q' // Your EmailJS Service ID
+    const TEMPLATE_ID = 'template_c0yeufl' // Your EmailJS Template ID
+    const PUBLIC_KEY = 'w8WgMQvLoOxbwCVeQ' // Your EmailJS Public Key
+
+    // Template parameters that match your EmailJS template
+    const templateParams = {
+      from_name: form.name,
+      from_email: form.email,
+      subject: form.subject,
+      message: form.message,
+      to_name: 'IES Team', // You can customize this
+    }
+
+    // Send email using EmailJS
+    emailjs.send(SERVICE_ID, TEMPLATE_ID, templateParams, PUBLIC_KEY)
+      .then(
+        (response) => {
+          console.log('SUCCESS!', response.status, response.text)
+          setSubmitStatus('success')
+          setIsSubmitting(false)
+          // Reset form
+          setForm({name:'',email:'',subject:'',message:''})
+          // Clear success message after 5 seconds
+          setTimeout(() => setSubmitStatus(null), 5000)
+        },
+        (error) => {
+          console.log('FAILED...', error)
+          setSubmitStatus('error')
+          setIsSubmitting(false)
+          // Clear error message after 5 seconds
+          setTimeout(() => setSubmitStatus(null), 5000)
+        }
+      )
   }
 
   const offices = [
@@ -41,17 +80,40 @@ export default function Contact(){
   return (
     <div className="overflow-hidden">
       {/* Hero Section */}
-      <section className="bg-gradient-to-br from-gray-900 via-gray-800 to-green-900 text-white py-20 -mt-12 pt-32">
-        <div className="container">
+      <section className="relative bg-gradient-to-br from-blue-900 via-gray-800 to-green-900 text-white py-20 -mt-12 pt-32 overflow-hidden">
+        <motion.div
+          className="absolute top-20 right-20 w-96 h-96 bg-blue-500/10 rounded-full blur-3xl"
+          animate={{ y: [0, -40, 0], scale: [1, 1.2, 1] }}
+          transition={{ duration: 10, repeat: Infinity, ease: 'easeInOut' }}
+        />
+        <motion.div
+          className="absolute bottom-20 left-20 w-96 h-96 bg-green-500/10 rounded-full blur-3xl"
+          animate={{ y: [0, 40, 0], scale: [1, 1.1, 1] }}
+          transition={{ duration: 8, repeat: Infinity, ease: 'easeInOut' }}
+        />
+        <div className="container relative z-10">
           <motion.div
-            initial={{ opacity: 0, y: 20 }}
+            initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8 }}
             className="max-w-4xl mx-auto text-center"
           >
-            <h1 className="text-5xl md:text-6xl font-bold mb-6">Get In Touch</h1>
-            <p className="text-xl text-gray-300 leading-relaxed">
-              Ready to start your project? We're here to help bring your vision to life with our comprehensive MEP engineering expertise.
-            </p>
+            <motion.h1
+              className="text-5xl md:text-6xl font-bold mb-6"
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: 0.2, duration: 0.8 }}
+            >
+              Get In <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-green-400">Touch</span>
+            </motion.h1>
+            <motion.p
+              className="text-xl text-gray-300 leading-relaxed"
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: 0.4, duration: 0.8 }}
+            >
+              Ready to start your project? We're here to help bring your vision to life with our comprehensive MEP engineering expertise
+            </motion.p>
           </motion.div>
         </div>
       </section>
@@ -125,11 +187,58 @@ export default function Contact(){
                   />
                 </div>
 
-                <button className="w-full bg-green-600 text-white px-8 py-4 rounded-lg font-bold hover:bg-green-700 transition shadow-lg flex items-center justify-center gap-2">
-                  Send Message
-                  <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M14 5l7 7m0 0l-7 7m7-7H3" />
-                  </svg>
+                {/* Status Messages */}
+                {submitStatus === 'success' && (
+                  <motion.div 
+                    initial={{ opacity: 0, y: -10 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    className="p-4 bg-green-100 border border-green-400 text-green-700 rounded-lg flex items-center gap-2"
+                  >
+                    <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
+                      <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd" />
+                    </svg>
+                    <span className="font-semibold">Success! Your message has been sent.</span>
+                  </motion.div>
+                )}
+
+                {submitStatus === 'error' && (
+                  <motion.div 
+                    initial={{ opacity: 0, y: -10 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    className="p-4 bg-red-100 border border-red-400 text-red-700 rounded-lg flex items-center gap-2"
+                  >
+                    <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
+                      <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zM8.707 7.293a1 1 0 00-1.414 1.414L8.586 10l-1.293 1.293a1 1 0 101.414 1.414L10 11.414l1.293 1.293a1 1 0 001.414-1.414L11.414 10l1.293-1.293a1 1 0 00-1.414-1.414L10 8.586 8.707 7.293z" clipRule="evenodd" />
+                    </svg>
+                    <span className="font-semibold">Error sending message. Please try again or contact us directly.</span>
+                  </motion.div>
+                )}
+
+                <button 
+                  type="submit"
+                  disabled={isSubmitting}
+                  className={`w-full px-8 py-4 rounded-lg font-bold transition shadow-lg flex items-center justify-center gap-2 ${
+                    isSubmitting 
+                      ? 'bg-gray-400 cursor-not-allowed' 
+                      : 'bg-green-600 text-white hover:bg-green-700'
+                  }`}
+                >
+                  {isSubmitting ? (
+                    <>
+                      <svg className="animate-spin h-5 w-5 text-white" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
+                        <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4"></circle>
+                        <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
+                      </svg>
+                      Sending...
+                    </>
+                  ) : (
+                    <>
+                      Send Message
+                      <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M14 5l7 7m0 0l-7 7m7-7H3" />
+                      </svg>
+                    </>
+                  )}
                 </button>
               </form>
             </motion.div>
@@ -226,16 +335,55 @@ export default function Contact(){
         </div>
       </section>
 
-      {/* Map Placeholder */}
+      {/* Google Maps Location */}
       <section className="py-20 bg-white">
         <div className="container">
-          <div className="bg-gray-200 rounded-2xl h-96 flex items-center justify-center">
-            <div className="text-center text-gray-600">
-              <div className="text-6xl mb-4">🗺️</div>
-              <p className="text-xl font-semibold">Map Integration</p>
-              <p className="text-sm mt-2">Google Maps or custom map can be embedded here</p>
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            className="text-center mb-12"
+          >
+            <h2 className="text-4xl font-bold text-gray-900 mb-4">Find Us On Map</h2>
+            <p className="text-gray-600 text-lg">Visit our office at CDC | Consulting & Design Consortium</p>
+          </motion.div>
+
+          <motion.div 
+            initial={{ opacity: 0, scale: 0.95 }}
+            whileInView={{ opacity: 1, scale: 1 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.5 }}
+            className="rounded-2xl overflow-hidden shadow-2xl border-4 border-green-100"
+          >
+            <iframe 
+              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d425.3788055636504!2d74.26160594078787!3d31.468348680958318!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x391903854c869b23%3A0x76780b643bc16ec2!2sCDC%20%7C%20Consulting%20%26%20Design%20Consortium%20(Pvt)%20Ltd!5e0!3m2!1sen!2s!4v1760797478854!5m2!1sen!2s" 
+              width="100%" 
+              height="500" 
+              style={{border: 0}} 
+              allowFullScreen="" 
+              loading="lazy" 
+              referrerPolicy="no-referrer-when-downgrade"
+              title="IES Office Location - CDC Consulting & Design Consortium"
+              className="w-full"
+            />
+          </motion.div>
+
+          {/* Address Info Below Map */}
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ delay: 0.3 }}
+            className="mt-8 text-center"
+          >
+            <div className="inline-flex items-center gap-3 bg-gradient-to-r from-green-50 to-blue-50 px-8 py-4 rounded-full border border-green-200">
+              <span className="text-2xl">�</span>
+              <div className="text-left">
+                <p className="font-bold text-gray-900">CDC | Consulting & Design Consortium (Pvt) Ltd</p>
+                <p className="text-sm text-gray-600">Johar Town, Lahore, Pakistan</p>
+              </div>
             </div>
-          </div>
+          </motion.div>
         </div>
       </section>
     </div>

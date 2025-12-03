@@ -22,7 +22,7 @@ export default function Header() {
             onMouseEnter={() => setCompanyDropdown(true)}
             onMouseLeave={() => setCompanyDropdown(false)}
           >
-            <button className="px-4 py-2 text-gray-700 hover:text-green-600 font-medium flex items-center gap-1">
+            <button className="px-4 py-2 text-gray-700 hover:text-blue-600 font-medium flex items-center gap-1 transition-colors">
               Company
               <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
@@ -30,18 +30,19 @@ export default function Header() {
             </button>
             {companyDropdown && (
               <div className="absolute left-0 mt-0 w-56 bg-white shadow-xl border border-gray-200 rounded-lg overflow-hidden">
-                <Link to="/about" className="block px-4 py-3 hover:bg-green-50 text-gray-700 hover:text-green-600">About IES</Link>
-                <Link to="/design-standards" className="block px-4 py-3 hover:bg-green-50 text-gray-700 hover:text-green-600">Design Standards</Link>
-                <Link to="/professional-affiliations" className="block px-4 py-3 hover:bg-green-50 text-gray-700 hover:text-green-600">Professional Affiliations</Link>
+                <Link to="/about" className="block px-4 py-3 hover:bg-gradient-to-r hover:from-green-50 hover:to-blue-50 text-gray-700 hover:text-blue-600 transition-colors">About IES</Link>
+                <Link to="/design-standards" className="block px-4 py-3 hover:bg-gradient-to-r hover:from-green-50 hover:to-blue-50 text-gray-700 hover:text-blue-600 transition-colors">Design Standards</Link>
+                <Link to="/professional-affiliations" className="block px-4 py-3 hover:bg-gradient-to-r hover:from-green-50 hover:to-blue-50 text-gray-700 hover:text-blue-600 transition-colors">Professional Affiliations</Link>
               </div>
             )}
           </div>
           
-          <NavLink to="/services" className={({isActive})=> isActive? 'px-4 py-2 text-green-600 font-semibold' : 'px-4 py-2 text-gray-700 hover:text-green-600 font-medium'}>Services</NavLink>
-          <NavLink to="/activities" className={({isActive})=> isActive? 'px-4 py-2 text-green-600 font-semibold' : 'px-4 py-2 text-gray-700 hover:text-green-600 font-medium'}>Activities</NavLink>
-          <NavLink to="/projects" className={({isActive})=> isActive? 'px-4 py-2 text-green-600 font-semibold' : 'px-4 py-2 text-gray-700 hover:text-green-600 font-medium'}>Projects</NavLink>
-          <NavLink to="/careers" className={({isActive})=> isActive? 'px-4 py-2 text-green-600 font-semibold' : 'px-4 py-2 text-gray-700 hover:text-green-600 font-medium'}>Career</NavLink>
-          <NavLink to="/contact" className={({isActive})=> isActive? 'px-4 py-2 bg-green-600 text-white rounded' : 'px-4 py-2 bg-gray-800 text-white hover:bg-green-600 rounded'}>Contact</NavLink>
+          <NavLink to="/services" className={({isActive})=> isActive? 'px-4 py-2 text-blue-600 font-semibold' : 'px-4 py-2 text-gray-700 hover:text-blue-600 font-medium transition-colors'}>Services</NavLink>
+          <NavLink to="/activities" className={({isActive})=> isActive? 'px-4 py-2 text-blue-600 font-semibold' : 'px-4 py-2 text-gray-700 hover:text-blue-600 font-medium transition-colors'}>Activities</NavLink>
+          <NavLink to="/specialization" className={({isActive})=> isActive? 'px-4 py-2 text-blue-600 font-semibold' : 'px-4 py-2 text-gray-700 hover:text-blue-600 font-medium transition-colors'}>Specialization</NavLink>
+          <NavLink to="/projects" className={({isActive})=> isActive? 'px-4 py-2 text-blue-600 font-semibold' : 'px-4 py-2 text-gray-700 hover:text-blue-600 font-medium transition-colors'}>Projects</NavLink>
+          <NavLink to="/careers" className={({isActive})=> isActive? 'px-4 py-2 text-blue-600 font-semibold' : 'px-4 py-2 text-gray-700 hover:text-blue-600 font-medium transition-colors'}>Career</NavLink>
+          <NavLink to="/contact" className={({isActive})=> isActive? 'px-4 py-2 bg-gradient-to-r from-green-600 via-blue-600 to-green-600 text-white rounded' : 'px-4 py-2 bg-gray-800 text-white hover:bg-gradient-to-r hover:from-green-600 hover:via-blue-600 hover:to-green-600 rounded transition-all'}>Contact</NavLink>
         </nav>
 
         {/* Mobile Menu Button */}
@@ -72,6 +73,7 @@ export default function Header() {
             <div className="font-semibold text-sm text-gray-500 px-4 py-2 mt-2">MENU</div>
             <NavLink to="/services" onClick={() => setMobileMenuOpen(false)} className="px-6 py-2 text-gray-700 hover:bg-gray-50">Services</NavLink>
             <NavLink to="/activities" onClick={() => setMobileMenuOpen(false)} className="px-6 py-2 text-gray-700 hover:bg-gray-50">Activities</NavLink>
+            <NavLink to="/specialization" onClick={() => setMobileMenuOpen(false)} className="px-6 py-2 text-gray-700 hover:bg-gray-50">Specialization</NavLink>
             <NavLink to="/projects" onClick={() => setMobileMenuOpen(false)} className="px-6 py-2 text-gray-700 hover:bg-gray-50">Projects</NavLink>
             <NavLink to="/careers" onClick={() => setMobileMenuOpen(false)} className="px-6 py-2 text-gray-700 hover:bg-gray-50">Career</NavLink>
             <NavLink to="/contact" onClick={() => setMobileMenuOpen(false)} className="px-6 py-2 text-gray-700 hover:bg-gray-50">Contact</NavLink>
