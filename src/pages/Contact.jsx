@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from 'react'
 import { motion } from 'framer-motion'
-import emailjs from '@emailjs/browser'
 
 export default function Contact(){
   useEffect(()=>{
@@ -8,49 +7,47 @@ export default function Contact(){
     setMeta('Contact','Contact IES for services and inquiries')
   },[])
   
-  const [form, setForm] = useState({name:'',email:'',subject:'',message:''})
+  const [form, setForm] = useState({name:'',email:'',phone:'',subject:'',message:''})
   const [isSubmitting, setIsSubmitting] = useState(false)
   const [submitStatus, setSubmitStatus] = useState(null) // 'success' | 'error' | null
 
-  function onSubmit(e){
+  async function onSubmit(e){
     e.preventDefault();
     setIsSubmitting(true)
     setSubmitStatus(null)
 
-    // EmailJS Configuration
-    const SERVICE_ID = 'service_xe50j7q' // Your EmailJS Service ID
-    const TEMPLATE_ID = 'template_c0yeufl' // Your EmailJS Template ID
-    const PUBLIC_KEY = 'w8WgMQvLoOxbwCVeQ' // Your EmailJS Public Key
+    // Backend API URL - Update this with your deployed backend URL
+    const API_URL = import.meta.env.VITE_API_URL || 'http://localhost:3001'
 
-    // Template parameters that match your EmailJS template
-    const templateParams = {
-      from_name: form.name,
-      from_email: form.email,
-      subject: form.subject,
-      message: form.message,
-      to_name: 'IES Team', // You can customize this
-    }
-
-    // Send email using EmailJS
-    emailjs.send(SERVICE_ID, TEMPLATE_ID, templateParams, PUBLIC_KEY)
-      .then(
-        (response) => {
-          console.log('SUCCESS!', response.status, response.text)
-          setSubmitStatus('success')
-          setIsSubmitting(false)
-          // Reset form
-          setForm({name:'',email:'',subject:'',message:''})
-          // Clear success message after 5 seconds
-          setTimeout(() => setSubmitStatus(null), 5000)
+    try {
+      const response = await fetch(`${API_URL}/api/contact`, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
         },
-        (error) => {
-          console.log('FAILED...', error)
-          setSubmitStatus('error')
-          setIsSubmitting(false)
-          // Clear error message after 5 seconds
-          setTimeout(() => setSubmitStatus(null), 5000)
-        }
-      )
+        body: JSON.stringify(form)
+      })
+
+      const data = await response.json()
+
+      if (data.success) {
+        setSubmitStatus('success')
+        // Reset form
+        setForm({name:'',email:'',phone:'',subject:'',message:''})
+        // Clear success message after 5 seconds
+        setTimeout(() => setSubmitStatus(null), 5000)
+      } else {
+        setSubmitStatus('error')
+        setTimeout(() => setSubmitStatus(null), 5000)
+      }
+      
+    } catch (error) {
+      console.error('Contact form error:', error)
+      setSubmitStatus('error')
+      setTimeout(() => setSubmitStatus(null), 5000)
+    } finally {
+      setIsSubmitting(false)
+    }
   }
 
   const offices = [

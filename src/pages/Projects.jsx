@@ -132,7 +132,7 @@ export default function Projects(){
       description: 'HVAC Design for performance auditorium with acoustical considerations',
       image: 'https://images.unsplash.com/photo-1519750783826-e2420f4d687f?w=800&q=80',
       icon: '🎭',
-      color: 'from-blue-600 to-cyan-500',
+      color: 'from-green-600 to-emerald-500',
       tags: ['Auditorium', 'Acoustics', 'HVAC Design']
     },
     {
@@ -176,7 +176,7 @@ export default function Projects(){
       description: 'Sophisticated environmental controls for Cyclotron vault & hot lab',
       image: 'https://images.unsplash.com/photo-1579684385127-1ef15d508118?w=800&q=80',
       icon: '☢️',
-      color: 'from-blue-600 to-cyan-500',
+      color: 'from-green-600 to-emerald-500',
       tags: ['Cyclotron', 'Nuclear Medicine', 'Environmental Controls']
     },
     {
@@ -220,7 +220,7 @@ export default function Projects(){
       description: 'Complete HVAC Design, Tender Documentation & Top Supervision',
       image: 'https://images.unsplash.com/photo-1555636222-cae831e670b3?w=800&q=80',
       icon: '🏬',
-      color: 'from-blue-600 to-cyan-500',
+      color: 'from-green-600 to-emerald-500',
       tags: ['Mall', 'Retail', 'Complete Design']
     },
     {
@@ -264,7 +264,7 @@ export default function Projects(){
       description: 'HVAC Design for Healthcare facility as per International Standard',
       image: 'https://images.unsplash.com/photo-1586773860418-d37222d8fce3?w=800&q=80',
       icon: '🏥',
-      color: 'from-blue-600 to-cyan-500',
+      color: 'from-green-600 to-emerald-500',
       tags: ['Hospital', 'International Standards', 'HVAC Design']
     },
     {
@@ -275,7 +275,7 @@ export default function Projects(){
       description: 'HVAC Design for Clean Rooms Class A - Pharmaceutical grade',
       image: 'https://images.unsplash.com/photo-1582719471384-894fbb16e074?w=800&q=80',
       icon: '🧪',
-      color: 'from-blue-600 to-cyan-500',
+      color: 'from-blue-500 to-cyan-600',
       tags: ['Clean Room', 'Class A', 'Pharmaceutical']
     }
   ]

@@ -369,7 +369,7 @@ export default function Home(){
                   transition={{ type: "spring", stiffness: 300, damping: 20 }}
                 >
                   <img 
-                    src="/logo.jpg" 
+                    src="/logos/logo-ies.jpg" 
                     alt="IES Logo" 
                     className="rounded-2xl shadow-xl w-full h-64 object-cover"
                   />
@@ -631,11 +631,6 @@ export default function Home(){
 
         {/* Animated Marquee */}
         <div className="relative">
-          <div className="absolute left-0 top-0 bottom-0 w-32 bg-gradient-to-r from-white to-transparent z-10"></div>
-          <div className="absolute right-0 top-0 bottom-0 w-32 bg-gradient-to-l from-white to-transparent z-10"></div>
-          
-          {/* Center highlight zone */}
-          <div className="absolute left-1/2 top-0 bottom-0 w-64 -translate-x-1/2 pointer-events-none z-20"></div>
           
           <motion.div
             className="flex gap-12 py-8"

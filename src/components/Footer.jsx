@@ -11,7 +11,7 @@ export default function Footer(){
           {/* Company Info */}
           <div className="lg:col-span-2">
             <div className="flex items-center gap-3 mb-4">
-              <img src="/logo.jpg" alt="IES Logo" className="h-12 w-12 rounded-lg" />
+              <img src="/logos/logo-ies.jpg" alt="IES Logo" className="h-12 w-12 rounded-lg" />
               <h3 className="font-bold text-2xl">IES</h3>
             </div>
             <p className="text-gray-400 mb-6 leading-relaxed">

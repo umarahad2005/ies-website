@@ -9,7 +9,7 @@ export default function Header() {
     <header className="bg-white shadow-md sticky top-0 z-50 border-b border-gray-200">
       <div className="container flex items-center justify-between py-3">
           <Link to="/" className="flex items-center gap-3">
-          <img src="/logo.jpg" alt="IES logo" className="h-14 w-auto object-contain" loading="lazy" />
+          <img src="/logos/logo-ies.jpg" alt="IES logo" className="h-14 w-auto object-contain" loading="lazy" />
           <div className="flex flex-col">
             <span className="font-bold text-xl text-gray-900">IES</span>
             <span className="text-xs text-gray-500 hidden sm:block">Integrated & Efficient Solutions</span>
