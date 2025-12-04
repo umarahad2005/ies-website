@@ -106,14 +106,14 @@ export default function Services(){
   return (
     <div className="overflow-hidden">
       {/* Hero Section */}
-      <section className="relative bg-gradient-to-br from-blue-900 via-gray-800 to-green-900 text-white py-20 -mt-12 pt-32 overflow-hidden">
+      <section className="relative bg-gradient-to-br from-green-900 via-emerald-800 to-green-950 text-white py-20 -mt-12 pt-32 overflow-hidden">
         <motion.div
-          className="absolute top-20 right-20 w-96 h-96 bg-blue-500/10 rounded-full blur-3xl"
+          className="absolute top-20 right-20 w-96 h-96 bg-green-400/20 rounded-full blur-3xl"
           animate={{ y: [0, -40, 0], scale: [1, 1.2, 1] }}
           transition={{ duration: 10, repeat: Infinity, ease: 'easeInOut' }}
         />
         <motion.div
-          className="absolute bottom-20 left-20 w-96 h-96 bg-green-500/10 rounded-full blur-3xl"
+          className="absolute bottom-20 left-20 w-96 h-96 bg-emerald-400/20 rounded-full blur-3xl"
           animate={{ y: [0, 40, 0], scale: [1, 1.1, 1] }}
           transition={{ duration: 8, repeat: Infinity, ease: 'easeInOut' }}
         />
@@ -130,7 +130,7 @@ export default function Services(){
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.2, duration: 0.8 }}
             >
-              Our <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-green-400">Services</span>
+              Our <span className="text-transparent bg-clip-text bg-gradient-to-r from-green-300 to-emerald-300">Services</span>
             </motion.h1>
             <motion.p
               className="text-xl text-gray-300 leading-relaxed"
@@ -153,8 +153,8 @@ export default function Services(){
             viewport={{ once: true }}
             className="text-center mb-16"
           >
-            <h2 className="text-4xl md:text-5xl font-bold text-gray-900 mb-4">
-              Complete Engineering Solutions
+            <h2 className="text-4xl md:text-5xl font-bold mb-4">
+              <span className="text-transparent bg-clip-text bg-gradient-to-r from-green-500 via-emerald-500 to-green-600">Complete Engineering Solutions</span>
             </h2>
             <p className="text-xl text-gray-600 max-w-3xl mx-auto">
               We offer end-to-end MEP engineering services from initial planning to post-construction optimization
@@ -201,7 +201,7 @@ export default function Services(){
                     {service.subtitle}
                   </div>
                   
-                  <h3 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
+                  <h3 className={`text-3xl md:text-4xl font-bold mb-4 bg-gradient-to-r ${service.color} bg-clip-text text-transparent`}>
                     {service.title}
                   </h3>
                   
@@ -235,8 +235,8 @@ export default function Services(){
             viewport={{ once: true }}
             className="text-center mb-12"
           >
-            <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
-              Our Expertise
+            <h2 className="text-3xl md:text-4xl font-bold mb-4">
+              <span className="text-transparent bg-clip-text bg-gradient-to-r from-green-500 via-emerald-500 to-green-600">Our Expertise</span>
             </h2>
             <p className="text-lg text-gray-600 max-w-2xl mx-auto">
               Specialized engineering services across multiple domains
@@ -258,26 +258,21 @@ export default function Services(){
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ delay: idx * 0.1, duration: 0.6 }}
-                whileHover={{ scale: 1.02 }}
-                className="bg-white p-8 rounded-xl shadow-lg border border-gray-100"
-                style={{ 
-                  transition: "box-shadow 0.3s ease, transform 0.3s ease",
-                  boxShadow: idx % 2 === 0 ? '0 4px 6px -1px rgba(34, 197, 94, 0.1), 0 2px 4px -1px rgba(34, 197, 94, 0.06)' : '0 4px 6px -1px rgba(59, 130, 246, 0.1), 0 2px 4px -1px rgba(59, 130, 246, 0.06)'
-                }}
-                onMouseEnter={(e) => {
-                  e.currentTarget.style.boxShadow = idx % 2 === 0 
-                    ? '0 20px 25px -5px rgba(34, 197, 94, 0.3), 0 10px 10px -5px rgba(34, 197, 94, 0.2)'
-                    : '0 20px 25px -5px rgba(59, 130, 246, 0.3), 0 10px 10px -5px rgba(59, 130, 246, 0.2)'
-                }}
-                onMouseLeave={(e) => {
-                  e.currentTarget.style.boxShadow = idx % 2 === 0
-                    ? '0 4px 6px -1px rgba(34, 197, 94, 0.1), 0 2px 4px -1px rgba(34, 197, 94, 0.06)'
-                    : '0 4px 6px -1px rgba(59, 130, 246, 0.1), 0 2px 4px -1px rgba(59, 130, 246, 0.06)'
-                }}
+                whileHover={{ scale: 1.02, y: -5 }}
+                className="relative bg-white rounded-3xl shadow-xl hover:shadow-2xl transition-all duration-500 overflow-hidden border border-gray-100 group"
               >
-                <div className="text-5xl mb-4">{item.icon}</div>
-                <h3 className="text-xl font-bold text-gray-900 mb-2">{item.title}</h3>
-                <p className="text-gray-600">{item.desc}</p>
+                {/* Gradient Header */}
+                <div className={`relative h-32 bg-gradient-to-br ${idx % 2 === 0 ? 'from-green-50 to-emerald-50' : 'from-blue-50 to-cyan-50'} flex items-center justify-center`}>
+                  <div className="text-6xl drop-shadow-lg">{item.icon}</div>
+                </div>
+                
+                {/* Content */}
+                <div className="p-6 bg-white">
+                  <h3 className={`text-xl font-bold mb-2 bg-gradient-to-r ${idx % 2 === 0 ? 'from-green-500 to-emerald-600' : 'from-blue-500 to-cyan-600'} bg-clip-text text-transparent`}>
+                    {item.title}
+                  </h3>
+                  <p className="text-gray-700 leading-relaxed">{item.desc}</p>
+                </div>
               </motion.div>
             ))}
           </div>

@@ -83,10 +83,10 @@ export default function Specialization() {
   return (
     <div className="overflow-hidden">
       {/* Hero Section */}
-      <section className="relative bg-gradient-to-br from-blue-900 via-gray-800 to-green-900 text-white py-20 -mt-12 pt-32 overflow-hidden">
+      <section className="relative bg-gradient-to-br from-green-900 via-emerald-800 to-green-950 text-white py-20 -mt-12 pt-32 overflow-hidden">
         {/* Animated Background Blobs */}
         <motion.div
-          className="absolute top-20 right-20 w-96 h-96 bg-blue-500/10 rounded-full blur-3xl"
+          className="absolute top-20 right-20 w-96 h-96 bg-green-400/20 rounded-full blur-3xl"
           animate={{
             y: [0, -40, 0],
             scale: [1, 1.2, 1]
@@ -123,7 +123,7 @@ export default function Specialization() {
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.2, duration: 0.8 }}
             >
-              Our <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-green-400">Specialization</span>
+              Our <span className="text-transparent bg-clip-text bg-gradient-to-r from-green-300 to-emerald-300">Specialization</span>
             </motion.h1>
             <motion.p
               className="text-xl text-gray-300 leading-relaxed"
@@ -153,49 +153,27 @@ export default function Specialization() {
                 variants={itemVariants}
                 whileHover={{ y: -10, scale: 1.02 }}
                 transition={{ type: "spring", stiffness: 300, damping: 20 }}
-                className="group relative bg-white rounded-2xl overflow-hidden border border-gray-200 hover:border-transparent transition-all duration-500"
-                style={{
-                  boxShadow: '0 4px 6px rgba(0, 0, 0, 0.1)',
-                }}
-                onMouseEnter={(e) => {
-                  e.currentTarget.style.boxShadow = idx % 2 === 0 
-                    ? '0 20px 40px rgba(34, 197, 94, 0.3)' 
-                    : '0 20px 40px rgba(59, 130, 246, 0.3)'
-                }}
-                onMouseLeave={(e) => {
-                  e.currentTarget.style.boxShadow = '0 4px 6px rgba(0, 0, 0, 0.1)'
-                }}
+                className="group relative bg-white rounded-3xl overflow-hidden shadow-xl hover:shadow-2xl border border-gray-100 transition-all duration-500"
               >
-                {/* Image Section */}
-                <div className="relative h-64 overflow-hidden">
-                  <img
-                    src={item.image}
-                    alt={item.title}
-                    className="w-full h-full object-cover transform group-hover:scale-110 transition-transform duration-700"
-                  />
-                  <div className={`absolute inset-0 bg-gradient-to-t ${
-                    idx % 2 === 0 
-                      ? 'from-green-900/80 to-transparent' 
-                      : 'from-blue-900/80 to-transparent'
-                  }`}></div>
-                  
-                  {/* Icon */}
-                  <div className="absolute top-4 left-4">
-                    <div className={`text-5xl ${
-                      idx % 2 === 0 
-                        ? 'bg-green-500/20 border-green-400/50' 
-                        : 'bg-blue-500/20 border-blue-400/50'
-                    } backdrop-blur-sm border-2 rounded-2xl p-4 transform group-hover:scale-110 transition-transform duration-300`}>
-                      {item.icon}
-                    </div>
+                {/* Gradient Header with Icon */}
+                <div className={`relative h-48 bg-gradient-to-br ${
+                  idx % 2 === 0 ? 'from-green-50 to-emerald-50' : 'from-blue-50 to-cyan-50'
+                } flex items-center justify-center overflow-hidden`}>
+                  <div className="absolute inset-0 opacity-30">
+                    <img
+                      src={item.image}
+                      alt={item.title}
+                      className="w-full h-full object-cover"
+                    />
                   </div>
+                  <div className="relative z-10 text-8xl drop-shadow-lg">{item.icon}</div>
                 </div>
 
                 {/* Content Section */}
-                <div className="p-6">
-                  <h3 className={`text-2xl font-bold mb-3 ${
-                    idx % 2 === 0 ? 'text-green-600' : 'text-blue-600'
-                  }`}>
+                <div className="p-6 bg-white">
+                  <h3 className={`text-2xl font-bold mb-3 bg-gradient-to-r ${
+                    idx % 2 === 0 ? 'from-green-500 to-emerald-600' : 'from-blue-500 to-cyan-600'
+                  } bg-clip-text text-transparent`}>
                     {item.title}
                   </h3>
                   <p className="text-gray-600 leading-relaxed">

@@ -68,10 +68,10 @@ export default function DesignStandards(){
   return (
     <div className="overflow-hidden">
       {/* Hero Section - Matching Specialization Page */}
-      <section className="relative bg-gradient-to-br from-blue-900 via-gray-800 to-green-900 text-white py-20 -mt-12 pt-32 overflow-hidden">
+      <section className="relative bg-gradient-to-br from-green-900 via-emerald-800 to-green-950 text-white py-20 -mt-12 pt-32 overflow-hidden">
         {/* Animated Background Blobs */}
         <motion.div
-          className="absolute top-20 right-20 w-96 h-96 bg-blue-500/10 rounded-full blur-3xl"
+          className="absolute top-20 right-20 w-96 h-96 bg-green-400/20 rounded-full blur-3xl"
           animate={{
             y: [0, -40, 0],
             scale: [1, 1.2, 1]
@@ -83,7 +83,7 @@ export default function DesignStandards(){
           }}
         />
         <motion.div
-          className="absolute bottom-20 left-20 w-96 h-96 bg-green-500/10 rounded-full blur-3xl"
+          className="absolute bottom-20 left-20 w-96 h-96 bg-emerald-400/20 rounded-full blur-3xl"
           animate={{
             y: [0, 40, 0],
             scale: [1, 1.1, 1]
@@ -108,7 +108,7 @@ export default function DesignStandards(){
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.2, duration: 0.8 }}
             >
-              Design <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-green-400">Standards</span>
+              Design <span className="text-transparent bg-clip-text bg-gradient-to-r from-green-300 to-emerald-300">Standards</span>
             </motion.h1>
             <motion.p
               className="text-xl text-gray-300 leading-relaxed"

@@ -80,14 +80,14 @@ export default function Clients(){
   return (
     <div className="overflow-hidden">
       {/* Hero Section */}
-      <section className="relative bg-gradient-to-br from-blue-900 via-gray-800 to-green-900 text-white py-20 -mt-12 pt-32 overflow-hidden">
+      <section className="relative bg-gradient-to-br from-green-900 via-emerald-800 to-green-950 text-white py-20 -mt-12 pt-32 overflow-hidden">
         <motion.div
-          className="absolute top-20 right-20 w-96 h-96 bg-blue-500/10 rounded-full blur-3xl"
+          className="absolute top-20 right-20 w-96 h-96 bg-green-400/20 rounded-full blur-3xl"
           animate={{ y: [0, -40, 0], scale: [1, 1.2, 1] }}
           transition={{ duration: 10, repeat: Infinity, ease: 'easeInOut' }}
         />
         <motion.div
-          className="absolute bottom-20 left-20 w-96 h-96 bg-green-500/10 rounded-full blur-3xl"
+          className="absolute bottom-20 left-20 w-96 h-96 bg-emerald-400/20 rounded-full blur-3xl"
           animate={{ y: [0, 40, 0], scale: [1, 1.1, 1] }}
           transition={{ duration: 8, repeat: Infinity, ease: 'easeInOut' }}
         />
@@ -104,7 +104,7 @@ export default function Clients(){
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.2, duration: 0.8 }}
             >
-              Our <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-green-400">Clients</span>
+              Our <span className="text-transparent bg-clip-text bg-gradient-to-r from-green-300 to-emerald-300">Clients</span>
             </motion.h1>
             <motion.p
               className="text-xl text-gray-300 leading-relaxed"
@@ -153,9 +153,9 @@ export default function Clients(){
                 }}
               >
                 <div className="text-5xl mb-4">{item.icon}</div>
-                <h3 className={`text-2xl font-bold mb-3 ${
-                  item.color === 'green' ? 'text-green-600' : 'text-blue-600'
-                }`}>
+                <h3 className={`text-2xl font-bold mb-3 bg-gradient-to-r ${
+                  item.color === 'green' ? 'from-green-500 to-emerald-600' : 'from-blue-500 to-cyan-600'
+                } bg-clip-text text-transparent`}>
                   {item.category}
                 </h3>
                 <p className="text-gray-700 leading-relaxed">{item.description}</p>

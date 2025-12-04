@@ -24,7 +24,7 @@ export default function Home(){
     },
     {
       image: 'https://images.unsplash.com/photo-1503387762-592deb58ef4e?w=1600&q=80',
-      title: 'Sustainable Energy Solutions',
+      title: 'Building Sustainable Energy Solutions',
       subtitle: 'Leading the Way in Green Building Technology'
     },
     {
@@ -611,6 +611,139 @@ export default function Home(){
             </Link>
           </motion.div>
         </div>
+      </section>
+
+      {/* Proud Partners Section with Marquee */}
+      <section className="py-20 bg-white overflow-hidden">
+        <div className="container">
+          <motion.div 
+            className="text-center mb-12"
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+          >
+            <h2 className="text-5xl font-bold mb-4">
+              Our <span className="text-transparent bg-clip-text bg-gradient-to-r from-green-500 to-emerald-600">Proud Partners</span>
+            </h2>
+            <p className="text-gray-600 text-xl">Trusted by leading organizations across Pakistan</p>
+          </motion.div>
+        </div>
+
+        {/* Animated Marquee */}
+        <div className="relative">
+          <div className="absolute left-0 top-0 bottom-0 w-32 bg-gradient-to-r from-white to-transparent z-10"></div>
+          <div className="absolute right-0 top-0 bottom-0 w-32 bg-gradient-to-l from-white to-transparent z-10"></div>
+          
+          {/* Center highlight zone */}
+          <div className="absolute left-1/2 top-0 bottom-0 w-64 -translate-x-1/2 pointer-events-none z-20"></div>
+          
+          <motion.div
+            className="flex gap-12 py-8"
+            animate={{
+              x: [0, -1800]
+            }}
+            transition={{
+              x: {
+                repeat: Infinity,
+                repeatType: "loop",
+                duration: 30,
+                ease: "linear"
+              }
+            }}
+          >
+            {/* First set of logos */}
+            {[
+              '/logos/projectpics/download.png',
+              '/logos/projectpics/download (1).png',
+              '/logos/projectpics/download (2).png',
+              '/logos/projectpics/download (3).png',
+              '/logos/projectpics/download (4).png',
+              '/logos/projectpics/download (5).png',
+              '/logos/projectpics/download (6).png',
+              '/logos/projectpics/download (8).png',
+              '/logos/projectpics/download (2).jpg',
+              '/logos/projectpics/download (3).jpg',
+              '/logos/projectpics/download (4).jpg'
+            ].map((logo, idx) => (
+              <motion.div 
+                key={`logo-1-${idx}`}
+                className="flex-shrink-0 w-48 h-32 bg-white rounded-xl transition-all duration-500 p-6 flex items-center justify-center border border-gray-100 group logo-card"
+                style={{
+                  boxShadow: '0 10px 15px -3px rgba(34, 197, 94, 0.1), 0 4px 6px -4px rgba(59, 130, 246, 0.1)'
+                }}
+                whileHover={{
+                  scale: 1.05,
+                  boxShadow: '0 20px 25px -5px rgba(34, 197, 94, 0.3), 0 8px 10px -6px rgba(59, 130, 246, 0.3)'
+                }}
+              >
+                <img 
+                  src={logo} 
+                  alt={`Partner ${idx + 1}`}
+                  className="max-w-full max-h-full object-contain transition-all duration-500 logo-image"
+                />
+              </motion.div>
+            ))}
+            {/* Duplicate set for seamless loop */}
+            {[
+              '/logos/projectpics/download.png',
+              '/logos/projectpics/download (1).png',
+              '/logos/projectpics/download (2).png',
+              '/logos/projectpics/download (3).png',
+              '/logos/projectpics/download (4).png',
+              '/logos/projectpics/download (5).png',
+              '/logos/projectpics/download (6).png',
+              '/logos/projectpics/download (8).png',
+              '/logos/projectpics/download (2).jpg',
+              '/logos/projectpics/download (3).jpg',
+              '/logos/projectpics/download (4).jpg'
+            ].map((logo, idx) => (
+              <motion.div 
+                key={`logo-2-${idx}`}
+                className="flex-shrink-0 w-48 h-32 bg-white rounded-xl transition-all duration-500 p-6 flex items-center justify-center border border-gray-100 group logo-card"
+                style={{
+                  boxShadow: '0 10px 15px -3px rgba(34, 197, 94, 0.1), 0 4px 6px -4px rgba(59, 130, 246, 0.1)'
+                }}
+                whileHover={{
+                  scale: 1.05,
+                  boxShadow: '0 20px 25px -5px rgba(34, 197, 94, 0.3), 0 8px 10px -6px rgba(59, 130, 246, 0.3)'
+                }}
+              >
+                <img 
+                  src={logo} 
+                  alt={`Partner ${idx + 1}`}
+                  className="max-w-full max-h-full object-contain transition-all duration-500 logo-image"
+                />
+              </motion.div>
+            ))}
+          </motion.div>
+        </div>
+        
+        {/* Custom styles for center highlight effect */}
+        <style jsx>{`
+          @keyframes centerHighlight {
+            0%, 100% { 
+              filter: grayscale(70%);
+              box-shadow: 0 10px 15px -3px rgba(34, 197, 94, 0.1), 0 4px 6px -4px rgba(59, 130, 246, 0.1);
+            }
+            50% { 
+              filter: grayscale(0%);
+              box-shadow: 0 20px 25px -5px rgba(34, 197, 94, 0.4), 0 8px 10px -6px rgba(59, 130, 246, 0.4);
+            }
+          }
+          
+          .logo-card {
+            animation: centerHighlight 6s ease-in-out infinite;
+          }
+          
+          .logo-card:hover .logo-image {
+            filter: grayscale(0%) !important;
+          }
+          
+          .logo-card:hover {
+            border-color: rgba(34, 197, 94, 0.3) !important;
+            box-shadow: 0 20px 25px -5px rgba(34, 197, 94, 0.3), 0 8px 10px -6px rgba(59, 130, 246, 0.3) !important;
+          }
+        `}</style>
       </section>
 
       {/* CTA Section with Parallax */}
