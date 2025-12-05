@@ -54,23 +54,9 @@ export default function Contact(){
     {
       city: 'Lahore',
       address: '18-J2, Johar Town, Lahore, Pakistan',
-      phone: '+92-42-35461094',
-      email: 'info@ies.com.pk',
+      phone: '042 3546 1094',
+      email: 'office@ies.com.pk',
       icon: '🏢'
-    },
-    {
-      city: 'Islamabad',
-      address: 'F-7 Markaz, Islamabad, Pakistan',
-      phone: '+92-51-2222222',
-      email: 'islamabad@ies.com.pk',
-      icon: '🏛️'
-    },
-    {
-      city: 'Karachi',
-      address: 'Clifton, Karachi, Pakistan',
-      phone: '+92-21-3333333',
-      email: 'karachi@ies.com.pk',
-      icon: '🌆'
     }
   ]
 
